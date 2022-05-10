@@ -1,8 +1,8 @@
 <?php
 class Payment{
     private $iban; 
-    private $expire; 
-    private $balance;
+    public $expire; 
+    public $balance;
     
     /**
      * __construct
@@ -28,7 +28,7 @@ class Payment{
     }
 
     public function getBalance(){
-        return $this-> pay_card-> balance;
+        return $this-> balance;
     }
 }
 

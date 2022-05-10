@@ -23,7 +23,14 @@
 <body>
     <p>
         <?php
-            echo $user->getBalance();
+            echo $user->buyProduct($bocconcini);
+            
+        ?>
+    </p> 
+    <p>
+        Credito residuo:
+        <?php
+           echo $user->getBalance();
         ?>
     </p>
     

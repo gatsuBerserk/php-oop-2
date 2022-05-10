@@ -7,7 +7,7 @@
       private $dateBirth;
       private $pay_card;
       private $isRegistred;
-      private $discount;
+      public $discount;
    
    
       
@@ -56,8 +56,29 @@
       return $this->surname;
    }
    public function getBalance(){
-      return $this->balance . "€";
-   }
+      return $this->pay_card->balance ."€";
+   }  
+
+   public function buyProduct($product)
+    {
+        if ($this->pay_card->expire < date('Y'))
+            return 'Carta di credito scaduta.';
+
+        if ($this->getBalance() < $product->price)
+            return 'Credito insufficiente';
+
+
+        if ($this->discount > 0) {
+            $price = $product->price - $product->price / 100 * $this->discount;
+            $this->pay_card->balance -= $price;
+
+            return "Transazione approvata, hai ricevuto uno sconto del $this->discount% e hai speso " . round($price, 2) . "€";
+        } else {
+            $this->pay_card->balance -= $product->price;
+
+            return "Transazione approvata, non hai ricevuto nessuno sconto e hai speso " . round($product->price, 2) . "€";
+        }
+    }
 
    }
 
