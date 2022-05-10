@@ -1,20 +1,25 @@
 <?php 
     class Products{
         private $name_product; 
-        private $price_product;
-        private $description; 
+        private $price;
+        private $quantity; 
+        private $description;
         
+        
+              
+               
         /**
          * __construct
          *
-         * @param  string $name_product
-         * @param  float $price_product
-         * @param  string $description
+         * @param  mixed $name_product
+         * @param  mixed $price
+         * @param  mixed $description
          * @return void
          */
-        function __construct($name_product, $price_product, $description){
+        function __construct($name_product, $price,$quantity, $description){
             $this->name_product = $name_product;
-            $this-> price_product = $price_product;
+            $this-> price = $price;
+            $this->quantity = $quantity;
             $this-> description = $description;           
             
         }
@@ -23,7 +28,10 @@
             return $this-> name_product;
         }
         public function getPrice(){
-            return $this-> price_product . "€";
+            return $this-> price . "€";
+        }
+        public function getQuantity(){
+            return $this->quantity;
         }
         public function getDescription(){
             return $this-> description;
